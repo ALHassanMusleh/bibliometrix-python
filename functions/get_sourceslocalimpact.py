@@ -143,8 +143,7 @@ def get_sources_local_impact(df, num_of_sources_local_impact, source_local_impac
             bordercolor="#5567BB"
         ),
     )
-    fig = go.FigureWidget(fig)
-    fig._config = fig._config | {'modeBarButtonsToRemove': ['pan', 'select', 'lasso2d', 'toImage'],
-                                 'displaylogo': False}
+    
+    
 
     return fig, source_counts

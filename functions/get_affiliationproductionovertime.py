@@ -70,8 +70,7 @@ def get_affiliation_production_over_time(df, top_k_affiliations):
     # Customize the grid
     fig.update_xaxes(showgrid=True, gridwidth=1, gridcolor='#EFEFEF')
     fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='#EFEFEF')
-    fig = go.FigureWidget(fig)
-    fig._config = fig._config | {'modeBarButtonsToRemove': ['pan', 'select', 'lasso2d', 'toImage'],
-                                 'displaylogo': False}
+    
+    
 
     return fig, AffOverTime

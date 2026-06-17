@@ -120,8 +120,7 @@ def get_relevant_sources(df, num_of_sources):
             bordercolor="#5567BB"
         ),
     )
-    fig = go.FigureWidget(fig)
-    fig._config = fig._config | {'modeBarButtonsToRemove': ['pan', 'select', 'lasso2d', 'toImage'],
-                                 'displaylogo': False}
+    
+    
 
     return fig, table_relevant_sources

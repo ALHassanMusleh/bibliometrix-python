@@ -83,8 +83,7 @@ def get_relevant_affiliations(df, num_of_affiliations, disambiguation):
         height=800,
         showlegend=False
     )
-    fig = go.FigureWidget(fig)
-    fig._config = fig._config | {'modeBarButtonsToRemove': ['pan', 'select', 'lasso2d', 'toImage'],
-                                 'displaylogo': False}
+    
+    
 
     return fig, affiliation_counts

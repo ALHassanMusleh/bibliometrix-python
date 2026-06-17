@@ -93,8 +93,7 @@ def get_lotka_law(df):
     fig.update_xaxes(showgrid=True, gridwidth=1, gridcolor='#EFEFEF')
     fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='#EFEFEF', tickformat=".0%")
 
-    fig = go.FigureWidget(fig)
-    fig._config = fig._config | {'modeBarButtonsToRemove': ['pan', 'select', 'lasso2d', 'toImage'],
-                                 'displaylogo': False}
+    
+    
     
     return fig, author_prod

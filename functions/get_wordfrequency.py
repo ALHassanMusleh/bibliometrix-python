@@ -92,9 +92,8 @@ def get_word_frequency(df, ngram, field_wf, file_upload_terms_wf, file_upload_sy
     # Customize the grid
     fig.update_xaxes(showgrid=True, gridwidth=1, gridcolor='#EFEFEF')
     fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='#EFEFEF')
-    fig = go.FigureWidget(fig)
-    fig._config = fig._config | {'modeBarButtonsToRemove': ['pan', 'select', 'lasso2d', 'toImage'],
-                                 'displaylogo': False}
+    
+    
 
     return fig, word_freq
 

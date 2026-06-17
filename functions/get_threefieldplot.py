@@ -189,13 +189,7 @@ def get_three_field_plot(df, left_field, middle_field, right_field, left_field_i
         plot_bgcolor='white',
         paper_bgcolor='white',
     )
-    fig = go.FigureWidget(fig)
-    fig._config = fig._config | {
-        'modeBarButtonsToRemove': [
-            'sendDataToCloud', 'pan', 'select', 'lasso2d', 'toImage',
-            'toggleSpikelines', 'hoverClosestCartesian', 'hoverCompareCartesian'
-        ],
-        'displaylogo': False
-    }
+    
+    
 
     return fig

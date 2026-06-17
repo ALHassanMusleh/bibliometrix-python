@@ -148,8 +148,7 @@ def get_local_cited_documents(df, num_of_local_cited_docs, field_separator, fast
         ),
         coloraxis_showscale=False,
     )
-    fig = go.FigureWidget(fig)
-    fig._config = fig._config | {'modeBarButtonsToRemove': ['pan', 'select', 'lasso2d', 'toImage'],
-                                 'displaylogo': False}
+    
+    
     
     return fig, table_located_documents

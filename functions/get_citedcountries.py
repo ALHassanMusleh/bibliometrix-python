@@ -135,8 +135,7 @@ def get_cited_countries(df, num_of_cited_countries, cited_countries_measure):
         ),
         coloraxis_showscale=False,
     )
-    fig = go.FigureWidget(fig)
-    fig._config = fig._config | {'modeBarButtonsToRemove': ['pan', 'select', 'lasso2d', 'toImage'],
-                                 'displaylogo': False}
+    
+    
     
     return fig, table

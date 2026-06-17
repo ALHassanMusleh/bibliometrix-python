@@ -133,8 +133,7 @@ def get_local_cited_sources(df, num_of_cited_sources):
             bordercolor="#5567BB"
         ),
     )
-    fig = go.FigureWidget(fig)
-    fig._config = fig._config | {'modeBarButtonsToRemove': ['pan', 'select', 'lasso2d', 'toImage'],
-                                 'displaylogo': False}
+    
+    
     
     return fig, table_located_sources

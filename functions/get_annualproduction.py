@@ -80,8 +80,7 @@ def get_annual_production(df):
     # Customize the grid
     fig.update_xaxes(showgrid=True, gridwidth=1, gridcolor='#EFEFEF')
     fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='#EFEFEF')
-    fig = go.FigureWidget(fig)
-    fig._config = fig._config | {'modeBarButtonsToRemove': ['pan', 'select', 'lasso2d', 'toImage'],
-                                 'displaylogo': False}
+    
+    
 
     return fig, publications_per_year

@@ -325,9 +325,8 @@ def get_factorial_analysis(
             bordercolor="#5567BB"
             ),
         )
-        fig = go.FigureWidget(fig)
-        fig._config = fig._config | {'modeBarButtonsToRemove': ['pan', 'select', 'lasso2d', 'toImage'],
-                                     'displaylogo': False}
+        
+        
 
         #####################################################################################
 

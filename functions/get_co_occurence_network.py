@@ -376,9 +376,8 @@ def get_co_occurence_network(df, field_cn, ngram, network_layout, clustering_alg
 
     # Remove hover info
     fig.update_traces(hoverinfo='none')
-    fig = go.FigureWidget(fig)
-    fig._config = fig._config | {'modeBarButtonsToRemove': ['pan', 'select', 'lasso2d', 'toImage'],
-                                 'displaylogo': False}
+    
+    
 
     ####################### Table #########################
     # Create cluster results dataframe with renamed columns
@@ -460,7 +459,7 @@ def get_co_occurence_network(df, field_cn, ngram, network_layout, clustering_alg
             bordercolor="#5567BB"
         ),
     )
-    degree_plot = go.FigureWidget(degree_plot)
+    degree_plot = go.Figure(degree_plot)
     degree_plot._config = degree_plot._config | {'modeBarButtonsToRemove': ['pan', 'select', 'lasso2d', 'toImage'],
                                                  'displaylogo': False}
 

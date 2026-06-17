@@ -313,9 +313,8 @@ def thematic_map(df, field="ID", n=250, minfreq=5, ngrams=1, stemming=False, siz
             range=ylimits
             )
         )
-        fig = go.FigureWidget(fig)
-        fig._config = fig._config | {'modeBarButtonsToRemove': ['pan', 'select', 'lasso2d', 'toImage'],
-                                     'displaylogo': False}
+        
+        
 
         ##############################################################################################################################################
 

@@ -130,8 +130,7 @@ def get_local_cited_refs(df, num_of_cited_refs, field_separator):
         ),
         coloraxis_showscale=False,
     )
-    fig = go.FigureWidget(fig)
-    fig._config = fig._config | {'modeBarButtonsToRemove': ['pan', 'select', 'lasso2d', 'toImage'],
-                                 'displaylogo': False}
+    
+    
     
     return fig, table_located_sources

@@ -93,9 +93,8 @@ def get_references_spectroscopy(df, start_year, end_year=2005, field_separator_s
 
     fig.update_xaxes(showgrid=True, gridwidth=1, gridcolor='#EFEFEF')
     fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='#EFEFEF')
-    fig = go.FigureWidget(fig)
-    fig._config = fig._config | {'modeBarButtonsToRemove': ['pan', 'select', 'lasso2d', 'toImage'],
-                                 'displaylogo': False}
+    
+    
 
     # Tabella CR con link Google Scholar
     cr_table['GoogleLink'] = cr_table['Reference'].apply(lambda ref: f'<a href="https://scholar.google.it/scholar?q={ref}" target="_blank">link</a>')

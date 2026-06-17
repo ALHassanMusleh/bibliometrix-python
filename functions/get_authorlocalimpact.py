@@ -125,8 +125,7 @@ def get_authors_local_impact(df, num_of_authors_local_impact, author_local_impac
         coloraxis_showscale=False,
         showlegend=False
     )
-    fig = go.FigureWidget(fig)
-    fig._config = fig._config | {'modeBarButtonsToRemove': ['pan', 'select', 'lasso2d', 'toImage'],
-                                 'displaylogo': False}
+    
+    
 
     return fig, source_counts

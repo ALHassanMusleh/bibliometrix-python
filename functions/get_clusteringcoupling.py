@@ -33,9 +33,8 @@ def get_clustering_coupling(df, unit_of_analysis, coupling_measured, stemmer, im
         showlegend=True,
         margin=dict(t=20)  # aggiunge spazio bianco sopra
     )
-    fig = go.FigureWidget(fig)
-    fig._config = fig._config | {'modeBarButtonsToRemove': ['pan', 'select', 'lasso2d', 'toImage'],
-                                 'displaylogo': False}
+    
+    
 
     cm_data = coupling_map['data']
     cm_clusters = coupling_map['clusters']

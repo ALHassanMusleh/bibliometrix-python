@@ -141,8 +141,7 @@ def get_cited_documents(df, num_of_cited_docs, cited_docs_measure):
         ),
         coloraxis_showscale=False,
     )
-    fig = go.FigureWidget(fig)
-    fig._config = fig._config | {'modeBarButtonsToRemove': ['pan', 'select', 'lasso2d', 'toImage'],
-                                 'displaylogo': False}
+    
+    
     
     return fig, table

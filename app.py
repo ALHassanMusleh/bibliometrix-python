@@ -650,7 +650,8 @@ with ui.tags.div(id="mainContent", class_="main-content"):
                             "": "-",
                             "1A": "Import raw data file(s)",
                             "1B": "Load Bibliometrix file(s)",
-                            "1C": "Use a sample dataset"
+                            "1C": "Use a sample dataset",
+                            "1D": "Retrieve via API (PubMed / OpenAlex)"
                         },
                     )
 
@@ -711,6 +712,18 @@ with ui.tags.div(id="mainContent", class_="main-content"):
                             ui.input_action_button("start_button", "Start", icon=ICONS["play"])
                             ui.markdown("Select a predefined sample dataset for testing purposes.")
 
+                        elif input.select() == "1D":
+                            ui.input_text("api_query", "Search Query", value="machine learning",
+                                         placeholder="e.g. cancer immunotherapy")
+                            ui.input_select("api_platform", "Platform", {
+                                "pubmed":   "PubMed",
+                                "openalex": "OpenAlex",
+                            }, selected="pubmed")
+                            ui.input_numeric("api_max_results", "Max Results", value=100, min=10, max=500)
+                            ui.p("Data will be retrieved automatically via API — no file download needed.",
+                                 style="color: gray; font-size: 10px;")
+                            ui.input_action_button("start_button", "Retrieve & Load", icon=ICONS["play"])
+
                         else:
                             ui.p("Please select a valid action to begin managing your data.", style="color: gray;")
                             ui.p("Follow the instructions below to manage your data efficiently:")
@@ -748,7 +761,48 @@ with ui.tags.div(id="mainContent", class_="main-content"):
 
                     if database == "Sample":
                         data = df.set(pd.read_excel("sources/samples/sample.xlsx"))
-                        reset_all_analyses()  # Reset analysis results when sample is loaded
+                        reset_all_analyses()
+
+                    if input.select() == "1D":
+                        # Advanced Level: retrieve via API
+                        try:
+                            from www.services.api_retriever import retrieve_from_api
+                            from www.services.transformer   import transform
+                            from www.services.field_calculator import add_sr
+                            from www.services.validator     import validate as etl_validate
+
+                            query    = input.api_query()
+                            platform = input.api_platform()
+                            max_res  = input.api_max_results()
+
+                            source_map = {"pubmed": "pubmed", "openalex": "scopus"}
+                            ext_map    = {"pubmed": "virtual.txt", "openalex": "virtual.csv"}
+
+                            records  = retrieve_from_api(query=query, platform=platform, max_results=max_res)
+                            source   = source_map[platform]
+                            loaded   = transform(records, source=source, filepath=ext_map[platform])
+                            loaded   = add_sr(loaded)
+                            etl_validate(loaded)
+                            df.set(loaded)
+                            reset_all_analyses()
+
+                            preview = loaded[["TI", "AU", "PY", "SO"]].head(5).copy()
+                            preview["AU"] = preview["AU"].apply(
+                                lambda x: ", ".join(x[:2]) if isinstance(x, list) else str(x))
+                            preview["TI"] = preview["TI"].str[:50] + "..."
+
+                            ui.div(
+                                ui.h5(f"✅ Retrieved {len(loaded)} records from {platform.upper()}",
+                                      style="color:green;"),
+                                ui.p(f"Query: '{query}' — data loaded. Use the analysis panels now."),
+                                ui.HTML(preview.to_html(index=False,
+                                        classes="table table-striped table-sm", border=0)),
+                            )
+                        except Exception as e:
+                            ui.div(
+                                ui.h5("❌ API Error:", style="color:red;"),
+                                ui.p(str(e), style="color:red;"),
+                            )
 
                     @render.express()
                     @reactive.event(input.Dataset)
@@ -854,7 +908,8 @@ with ui.tags.div(id="mainContent", class_="main-content"):
                 ),
 
         with ui.nav_panel("None", value="API"):
-            ui.h3("🚧 Warning: API is under construction 🚧")
+            ui.h3("🔗 API Data Retrieval", style="color: #5567BB;")
+            ui.p("Use Data menu on the left → Choose an action → Retrieve via API (PubMed / OpenAlex)")
         
         with ui.nav_panel("None", value="collections"):
             ui.h3("🚧 Warning: Merge Collection is under construction 🚧")

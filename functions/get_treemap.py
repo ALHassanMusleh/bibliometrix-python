@@ -65,9 +65,8 @@ def get_treemap(df, ngram, num_of_words, word_type, file_upload_terms, file_uplo
 
     # Add text to each cell
     fig.data[0].texttemplate = "%{label}<br>%{value} Occurrences<br>%{percentParent:.2%}"
-    fig = go.FigureWidget(fig)
-    fig._config = fig._config | {'modeBarButtonsToRemove': ['pan', 'select', 'lasso2d', 'toImage'],
-                                 'displaylogo': False}
+    
+    
 
     return fig, table
 

@@ -187,8 +187,7 @@ def get_world_map_collaboration(df, edges_min=1, edgesize=5):
     )
 
     fig.update_traces(hovertemplate=None)
-    fig = go.FigureWidget(fig)
-    fig._config = fig._config | {'modeBarButtonsToRemove': ['pan', 'select', 'lasso2d', 'toImage'],
-                                 'displaylogo': False}
+    
+    
 
     return fig, tab

@@ -305,7 +305,7 @@ def get_co_citation(
         showlegend=True,
         margin=dict(t=20)  # aggiunge spazio bianco sopra
     )
-    fig_density = go.FigureWidget(fig_density)
+    fig_density = go.Figure(fig_density)
     fig_density._config = fig_density._config | {'modeBarButtonsToRemove': ['pan', 'select', 'lasso2d', 'toImage'],
                                  'displaylogo': False}
 
@@ -390,7 +390,7 @@ def get_co_citation(
         showlegend=True,
         margin=dict(t=20)  # aggiunge spazio bianco sopra
     )
-    degree_plot = go.FigureWidget(degree_plot)
+    degree_plot = go.Figure(degree_plot)
     degree_plot._config = degree_plot._config | {'modeBarButtonsToRemove': ['pan', 'select', 'lasso2d', 'toImage'],
                                  'displaylogo': False}
 

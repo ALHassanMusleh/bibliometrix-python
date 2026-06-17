@@ -105,9 +105,8 @@ def get_author_production_over_time(df, top_k_authors):
         showlegend=False,
         margin=dict(l=0, r=0, t=40, b=0),  # Margins
     )
-    fig = go.FigureWidget(fig)
-    fig._config = fig._config | {'modeBarButtonsToRemove': ['pan', 'select', 'lasso2d', 'toImage'],
-                                 'displaylogo': False}
+    
+    
 
     # Sort production table by year and author
     table_authors_production = author_production.sort_values(by=["PY", "AU"])[["AU", "PY", "Production", "TotalCitations", "TCpY"]]

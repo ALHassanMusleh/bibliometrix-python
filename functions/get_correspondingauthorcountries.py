@@ -84,8 +84,7 @@ def get_corresponding_author_countries(df, top_k_countries):
             y=1.1
         )
     )
-    fig = go.FigureWidget(fig)
-    fig._config = fig._config | {'modeBarButtonsToRemove': ['pan', 'select', 'lasso2d', 'toImage'],
-                                 'displaylogo': False}
+    
+    
 
     return fig, table
